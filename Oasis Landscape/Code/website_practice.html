@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smooth Image Gallery with Pauses</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100vh;
+      background: #000;
+      overflow: hidden;
+    }
+
+    .gallery-container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .gallery-slider {
+      display: flex;
+      height: 100%;
+      width: calc(100vw * 6); /* 5 + 1 duplicate */
+      animation: slide 36s linear forwards;
+    }
+
+    .gallery-slider img {
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      flex-shrink: 0;
+      background-color: #333;
+    }
+
+    @keyframes slide {
+      0%    { transform: translateX(0); }
+      13.88% { transform: translateX(0); }
+
+      16.66% { transform: translateX(-100vw); }
+      30.55% { transform: translateX(-100vw); }
+
+      33.33% { transform: translateX(-200vw); }
+      47.22% { transform: translateX(-200vw); }
+
+      50%    { transform: translateX(-300vw); }
+      63.88% { transform: translateX(-300vw); }
+
+      66.66% { transform: translateX(-400vw); }
+      80.55% { transform: translateX(-400vw); }
+
+      83.33% { transform: translateX(-500vw); }
+      100%   { transform: translateX(-500vw); }
+    }
+
+    .intro-banner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      text-align: center;
+      padding: 2rem 3rem;
+      border-radius: 12px;
+      z-index: 10;
+    }
+
+    .intro-banner h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .intro-banner p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-btn {
+      padding: 0.75rem 1.5rem;
+      background: #ff69b4;
+      color: #000;
+      font-size: 1.1rem;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .cta-btn:hover {
+      background: #ff4c9e;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="gallery-container">
+    <div class="gallery-slider" id="slider">
+      <img src="https://cdn.pixabay.com/photo/2021/01/07/17/05/lawn-5897947_640.jpg" alt="Image 1" loading="eager">
+      <img src="https://cdn.pixabay.com/photo/2019/04/04/22/46/blue-lawn-mower-4103991_640.jpg" alt="Image 2" loading="eager">
+      <img src="https://cdn.pixabay.com/photo/2012/10/03/19/59/garden-path-59151_640.jpg" alt="Image 3" loading="eager">
+      <img src="https://cdn.pixabay.com/photo/2017/09/25/20/07/lawnmower-2786525_640.jpg" alt="Image 4" loading="eager">
+      <img src="https://cdn.pixabay.com/photo/2017/09/26/16/34/wheelbarrow-2789240_640.jpg" alt="Image 5" loading="eager">
+      <!-- Duplicate of first image -->
+      <img src="https://cdn.pixabay.com/photo/2021/01/07/17/05/lawn-5897947_640.jpg" alt="Image 1 duplicate" loading="eager">
+    </div>
+
+    <div class="intro-banner">
+      <h1>TRUST YOUR PROJECT TO US</h1>
+      <p>Placeholder</p>
+      <a href="#join" class="cta-btn">Book Online</a>
+    </div>
+  </div>
+
+  <script>
+    const slider = document.getElementById('slider');
+    const duration = 36000; // 36 seconds
+
+    setInterval(() => {
+      slider.style.animation = 'none';
+      slider.style.transform = 'translateX(0)';
+      void slider.offsetWidth; // force reflow
+      slider.style.animation = 'slide 36s linear forwards';
+    }, duration);
+  </script>
+</body>
+</html>
