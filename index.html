@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Oasis Landscape</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #fff;
+      scroll-behavior: smooth;
+      height: 100%;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 65px;
+      background-color: rgba(255, 255, 255, 0.50);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 2rem;
+      z-index: 1000;
+      backdrop-filter: blur(6px);
+    }
+
+    .logo {
+      position: absolute;
+      top: 0;
+      left: 2rem;
+      z-index: 1100;
+      display: flex;
+      align-items: center;
+      height: 65px;
+    }
+
+    .logo img {
+      height: 100px;
+      object-fit: contain;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    nav a {
+      color: #4A683A;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      line-height: 90px;
+      height: 40px;
+      padding: 0 1rem;
+      background-color: rgba(255, 255, 255, 0.6);
+      border: 2px solid #4A683A;
+      border-radius: 999px;
+      transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    nav a:hover {
+      background-color: #4A683A;
+      color: #fff;
+      border-color: #4A683A;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 2rem;
+      cursor: pointer;
+      color: #4A683A;
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      z-index: 1101;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        position: absolute;
+        top: 65px;
+        left: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.95);
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem 0;
+        display: none;
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      nav a {
+        width: 80%;
+        font-size: 1.1rem;
+        justify-content: center;
+        line-height: 1.5;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .logo img {
+        height: 80px;
+      }
+    }
+
+    .gallery-container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .gallery-slider {
+      display: flex;
+      height: 100%;
+      width: calc(100vw * 6);
+      animation: slide 36s linear infinite;
+    }
+
+    .gallery-slider img {
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    @keyframes slide {
+      0%, 13.88%     { transform: translateX(0); }
+      16.66%, 30.55% { transform: translateX(-100vw); }
+      33.33%, 47.22% { transform: translateX(-200vw); }
+      50%, 63.88%    { transform: translateX(-300vw); }
+      66.66%, 80.55% { transform: translateX(-400vw); }
+      83.33%, 100%   { transform: translateX(-500vw); }
+    }
+
+    .intro-banner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(74, 104, 58, 0.2);
+      color: #fff;
+      text-align: center;
+      padding: 2rem 3rem;
+      border-radius: 12px;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .intro-banner h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .intro-banner p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-btn {
+      padding: 0.75rem 1.5rem;
+      background: #4A683A;
+      color: #fff;
+      font-size: 1.1rem;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background 0.2s, color 0.2s;
+      pointer-events: auto;
+      display: inline-block;
+      border: 2px solid #4A683A;
+    }
+
+    .cta-btn:hover {
+      background: #fff;
+      color: #4A683A;
+    }
+
+    /* ===== FINANCIAL CALCULATOR ===== */
+    #calculator {
+      padding: 4rem 2rem;
+      background-color: #f4f4f4;
+      text-align: center;
+      color: #333;
+    }
+
+    #calculator h2 {
+      font-size: 2rem;
+      color: #4A683A;
+      margin-bottom: 1rem;
+    }
+
+    #calculator p {
+      color: #555;
+      margin-bottom: 1rem;
+    }
+
+    /* ===== CONTACT SECTION ===== */
+    #contact {
+      padding: 4rem 2rem;
+      background-color: #4A683A;
+      color: #fff;
+      text-align: center;
+    }
+
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.35);
+      padding: 2rem;
+      border-radius: 10px;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    textarea {
+      height: 150px;
+      resize: vertical;
+    }
+
+    button {
+      background-color: #4A683A;
+      color: #fff;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #3d5530;
+    }
+
+    footer {
+      background: #111;
+      color: #aaa;
+      text-align: center;
+      padding: 1rem 0;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      <img src="\Images\Oasis_Landscaping_Logo TEST 1 (1).png" alt="Company Logo" />
+    </div>
+    <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+    <nav id="navbar">
+      <a href="about.html">About Us</a>
+      <a href="services.html">Services</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- GALLERY -->
+  <div class="gallery-container">
+    <div class="gallery-slider">
+      <img src="https://cdn.pixabay.com/photo/2021/01/07/17/05/lawn-5897947_640.jpg" alt="Image 1" />
+      <img src="https://cdn.pixabay.com/photo/2019/04/04/22/46/blue-lawn-mower-4103991_640.jpg" alt="Image 2" />
+      <img src="https://cdn.pixabay.com/photo/2012/10/03/19/59/garden-path-59151_640.jpg" alt="Image 3" />
+      <img src="https://cdn.pixabay.com/photo/2017/09/25/20/07/lawnmower-2786525_640.jpg" alt="Image 4" />
+      <img src="https://cdn.pixabay.com/photo/2017/09/26/16/34/wheelbarrow-2789240_640.jpg" alt="Image 5" />
+      <img src="https://cdn.pixabay.com/photo/2021/01/07/17/05/lawn-5897947_640.jpg" alt="Image 6" />
+    </div>
+
+    <div class="intro-banner">
+      <h1>TRUST YOUR PROJECT TO US</h1>
+      <p>Placeholder</p>
+      <a href="#contact" class="cta-btn">Book Online</a>
+    </div>
+  </div>
+
+  <!-- FINANCIAL CALCULATOR -->
+  <section id="calculator">
+    <div style="max-width: 320px; max-height: 900px; margin: 0 auto;">
+      <h2>Loan Repayment Calculator</h2>
+      <p>Estimate your monthly payments with Hearth Financial.</p>
+
+      <iframe 
+        id="iframe-1203610" 
+        frameborder="0"
+        sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-presentation allow-top-navigation"
+        style="
+          width: 100%;
+          max-width: 850px;
+          height: 100vh;
+          display: block;
+          margin: 0 auto;
+          border-radius: 15px;
+          overflow: hidden;"
+        srcdoc="
+          <script>
+            window.onmessage = function(event) {
+              event.source.postMessage(
+                {
+                  iframeId: event.data,
+                  scrollHeight: document.body.getBoundingClientRect().height || document.body.scrollHeight
+                }, event.origin);
+            };
+          </script>
+          <body style='margin:0; display:flex; justify-content:center; align-items:center; height:100%;'>
+            <div style='max-width: 850px; width: 100%;'>
+              <script src='https://widget.gethearth.com/script.js'
+                      id='hearth-script'
+                      data-orgid='48343'
+                      data-partner='oasis-landscape-and-excavation-llc'>
+              </script>
+              <iframe id='hearth-widget_calculator_v1' style='border:0; width:100vw; height:80vh; border-radius: 16px; overflow: hidden; display: block; margin: auto;'></iframe>
+            </div>
+          </body>"
+      ></iframe>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <form action="https://formsubmit.co/jdiaze06@gmail.com" method="POST">
+      <input type="hidden" name="_captcha" value="false"> 
+      <label for="name">Name</label>
+      <input id="name" name="name" type="text" required />
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" required />
+      <label for="message">Message</label>
+      <textarea id="message" name="message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    Copyright © 2025 Oasis Landscape & Excavation - All Rights Reserved.
+  </footer>
+
+  <!-- SCRIPT FOR MOBILE MENU -->
+  <script>
+    document.getElementById("menu-toggle").addEventListener("click", function () {
+      document.getElementById("navbar").classList.toggle("active");
+    });
+  </script>
+
+</body>
+</html>
