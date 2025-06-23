@@ -563,6 +563,39 @@ border-top: 0px solid var(--oasis-green);
     flex: 1 1 100%;
   }
 }
+@media (max-width: 768px) {
+  .why-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+  }
+
+  .why-box {
+    width: 100%;
+    margin-bottom: 2rem;
+    text-align: center;
+    padding: 1.5rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  }
+
+  .why-box h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .why-box p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .why-box i {
+    font-size: 2.2rem;
+    margin-bottom: 0.75rem;
+    color: var(--oasis-green);
+  }
+}
+
 
 /* -- Testimonials Base Styles -- */
 .fancy-testimonials-section {
