@@ -48,3 +48,12 @@ function showNextTestimonial() {
 }
 
 setInterval(showNextTestimonial, 9000);
+
+const header = document.querySelector("header");
+const hero = document.querySelector(".hero");
+
+if (header && hero) {
+  const offset = header.offsetHeight + 20;
+  hero.style.paddingTop = `${offset}px`;
+}
+
