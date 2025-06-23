@@ -239,7 +239,7 @@
 
 
     body > *:not(header) {
-      margin-top: 63px;
+      margin-top: 0px;
     }
 
     .hero {
