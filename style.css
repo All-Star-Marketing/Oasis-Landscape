@@ -307,50 +307,26 @@
       z-index: 1000; /* High enough to be on top */
       position: relative;
     }
-
 @media (max-width: 768px) {
-  .hero {
-    height: 100vh;
-    padding: 0 1rem;
-    justify-content: center;
-    text-align: center;
-  }
-
-  .hero h1 {
-    font-size: 2.2rem;
-    max-width: 90vw;
-    margin-bottom: 0.75rem;
-  }
-
-  .hero p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    max-width: 90vw;
-    margin-bottom: 2rem;
-  }
-
   .cta-buttons {
+    display: flex;
     flex-direction: column;
     gap: 1rem;
+    align-items: center;
+    width: 100%;
     padding: 0 1.5rem;
   }
 
   .cta-buttons a {
-    font-size: 1rem;
-    padding: 0.9rem 1rem;
     width: 100%;
+    font-size: 1rem;
+    padding: 1rem;
     text-align: center;
-  }
-
-  .hero::before {
-    background: rgba(0, 0, 0, 0.4); /* darken slightly on small screens */
-  }
-
-  .hero video.bg-video,
-  .hero img.bg-image {
-    object-position: center center;
+    box-sizing: border-box;
   }
 }
+
+
 
 
     /*Intro Section */
