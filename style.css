@@ -245,6 +245,40 @@
   }
 }
 
+@media (max-width: 768px) {
+  .dropdown, .dropdown-content {
+    display: none !important;
+  }
+
+  .mobile-services {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-left: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .mobile-services-heading {
+    font-weight: bold;
+    color: var(--oasis-green);
+    font-size: 1.1rem;
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 0.5rem;
+  }
+
+  .mobile-services a {
+    color: #2e4828;
+    font-size: 1rem;
+    text-decoration: none;
+    padding-left: 0.5rem;
+  }
+
+  .mobile-services a:hover {
+    color: var(--oasis-green);
+  }
+}
+
 
     body > *:not(header) {
       margin-top: 0px;
