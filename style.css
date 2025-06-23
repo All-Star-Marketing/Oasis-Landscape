@@ -207,6 +207,55 @@
   }
 }
 
+/* Default hidden nav for mobile */
+@media (max-width: 768px) {
+  nav#navbar {
+    display: none;
+    flex-direction: column;
+    background-color: white;
+    position: absolute;
+    top: 65px;
+    right: 0;
+    width: 100%;
+    padding: 1rem 0;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    z-index: 1000;
+  }
+
+  nav#navbar.mobile-open {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+    font-size: 2rem;
+    color: var(--oasis-green);
+    background: none;
+    border: none;
+    z-index: 1101;
+  }
+
+  .menu-toggle.close::before {
+    content: "\2715"; /* Unicode X */
+  }
+
+  nav#navbar a {
+    text-align: center;
+    padding: 0.75rem 1.5rem;
+    display: block;
+  }
+
+  .dropdown-content {
+    position: static;
+    box-shadow: none;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 
     body > *:not(header) {
       margin-top: 63px;

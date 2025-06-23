@@ -23,12 +23,20 @@ window.addEventListener("scroll", function () {
 });
 
 // Mobile menu toggle
-const navToggle = document.querySelector('.nav-toggle');
-const siteHeader = document.querySelector('.site-header');
+const menuToggle = document.getElementById('menu-toggle');
+const navbar = document.getElementById('navbar');
 
-navToggle.addEventListener('click', () => {
-  siteHeader.classList.toggle('open');
+menuToggle.addEventListener('click', () => {
+  navbar.classList.toggle('mobile-open');
+  menuToggle.classList.toggle('close');
 });
+
+navbar.querySelectorAll('a:not(.dropbtn)').forEach(link =>
+  link.addEventListener('click', () => {
+    navbar.classList.remove('mobile-open');
+    menuToggle.classList.remove('close');
+  })
+);
 
 const testimonials = document.querySelectorAll('.testimonial-slide');
 let current = 0;
