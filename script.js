@@ -97,3 +97,23 @@ document.querySelectorAll('.submenu-toggle').forEach(toggle => {
   });
 });
 
+// Toggle ALL mobile service dropdowns
+document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
+  const menu = toggle.nextElementSibling;
+  toggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    const isVisible = menu.style.display === 'flex';
+    menu.style.display = isVisible ? 'none' : 'flex';
+  });
+});
+
+// Toggle ALL mobile submenus inside services
+document.querySelectorAll('.submenu-toggle').forEach(toggle => {
+  const subnav = toggle.nextElementSibling;
+  toggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    const isVisible = subnav.style.display === 'flex';
+    subnav.style.display = isVisible ? 'none' : 'flex';
+  });
+});
+
