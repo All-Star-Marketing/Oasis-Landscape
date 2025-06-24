@@ -1260,9 +1260,5 @@ nav a.active::after {
   color: var(--oasis-green);
 }
 
-.nav-links {
-  margin-left: 0rem; /* adjust as needed */
-}
-
 
   </style>
