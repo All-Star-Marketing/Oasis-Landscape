@@ -117,3 +117,19 @@ document.querySelectorAll('.submenu-toggle').forEach(toggle => {
   });
 });
 
+document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
+  const menu = toggle.nextElementSibling;
+  toggle.addEventListener('click', (e) => {
+    e.preventDefault(); // prevent jumping
+    menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+  });
+});
+
+document.querySelectorAll('.submenu-toggle').forEach(toggle => {
+  const subnav = toggle.nextElementSibling;
+  toggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    subnav.style.display = subnav.style.display === 'flex' ? 'none' : 'flex';
+  });
+});
+
