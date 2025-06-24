@@ -75,3 +75,18 @@ if (serviceToggle && serviceMenu) {
   });
 }
 
+const mobileDropdown = document.querySelector('.mobile-dropdown-toggle');
+const dropdownMenu = document.querySelector('.mobile-dropdown-menu');
+mobileDropdown?.addEventListener('click', (e) => {
+  e.preventDefault();
+  dropdownMenu.style.display = dropdownMenu.style.display === 'flex' ? 'none' : 'flex';
+});
+
+document.querySelectorAll('.submenu-toggle').forEach(toggle => {
+  const subnav = toggle.nextElementSibling;
+  toggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    subnav.style.display = subnav.style.display === 'flex' ? 'none' : 'flex';
+  });
+});
+
