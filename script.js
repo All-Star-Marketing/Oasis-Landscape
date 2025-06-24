@@ -57,3 +57,12 @@ if (header && hero) {
   hero.style.paddingTop = `${offset}px`;
 }
 
+const navLinks = document.querySelectorAll('nav a:not(.logo a)');
+
+navLinks.forEach(link => {
+  link.addEventListener('click', function () {
+    navLinks.forEach(l => l.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+
