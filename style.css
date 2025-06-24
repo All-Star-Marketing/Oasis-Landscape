@@ -1260,5 +1260,31 @@ nav a.active::after {
   color: var(--oasis-green);
 }
 
+.mobile-dropdown-toggle {
+  background: none;
+  border: none;
+  color: #2e4828;
+  font-weight: 600;
+  text-align: left;
+  font-size: 1.1rem;
+  padding: 0.75rem 0;
+  cursor: pointer;
+  width: 100%;
+}
+
+.mobile-dropdown-menu {
+  display: none;
+  padding-left: 1rem;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mobile-dropdown-menu a {
+  color: #4a683a;
+  font-size: 1rem;
+  text-decoration: none;
+  padding: 0.4rem 0;
+}
+
 
   </style>

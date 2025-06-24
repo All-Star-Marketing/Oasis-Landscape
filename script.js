@@ -66,3 +66,12 @@ navLinks.forEach(link => {
   });
 });
 
+const serviceToggle = document.querySelector('.mobile-dropdown-toggle');
+const serviceMenu = document.querySelector('.mobile-dropdown-menu');
+
+if (serviceToggle && serviceMenu) {
+  serviceToggle.addEventListener('click', () => {
+    serviceMenu.style.display = serviceMenu.style.display === 'flex' ? 'none' : 'flex';
+  });
+}
+
