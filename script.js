@@ -29,6 +29,13 @@ const navbar = document.getElementById('navbar');
 menuToggle.addEventListener('click', () => {
   navbar.classList.toggle('mobile-open');
   menuToggle.classList.toggle('close');
+  
+  // Disable/enable scroll
+  if (navbar.classList.contains('mobile-open')) {
+    document.body.classList.add('noscroll');
+  } else {
+    document.body.classList.remove('noscroll');
+  }
 });
 
 navbar.querySelectorAll('a:not(.dropbtn)').forEach(link =>
