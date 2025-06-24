@@ -1261,7 +1261,7 @@ nav a.active::after {
 }
 
 .nav-links {
-  margin-left: 51rem; /* adjust as needed */
+  margin-left: 0rem; /* adjust as needed */
 }
 
 
